@@ -9,6 +9,8 @@ Install `Docker` and `docker-compose`.
 POSTGRES_DB=schwul
 POSTGRES_USER=homo
 POSTGRES_PASSWORD=caDrufr2Sp7m
+TWITTER_KEY=twitterKey
+TWITTER_SECRET=twitterSecret
 ```
 
 
