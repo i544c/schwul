@@ -24,36 +24,44 @@
             <ul class="side-nav" id="mobile-col">
                 <li><a href="#">上映情報</a></li>
                 <li><a href="#">アニメDB</a></li>
+                {% if request.user.is_authenticated %}
                 <li class="no-padding"><ul class="collapsible collapsible-accordion"><li>
                     <a class="collapsible-header">
-                        ユーザ
+                        {{ request.user.username }}
                         <i class="material-icons">arrow_drop_down</i>
                     </a>
                     <div class="collapsible-body">
                         <ul>
                             <li><a href="#">プロフィール</a></li>
                             <li><a href="#">設定</a></li>
-                            <li><a href="#">ログアウト</a></li>
+                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
                         </ul>
                     </div>
                 </li></ul></li>
+                {% else %}
+                <li><a href="{% url 'social:begin' 'twitter' %}">Twitterログイン</a></li>
+                {% endif %}
             </ul>
             <ul class="left hide-on-med-and-down">
                 <li><a href="#">上映情報</a></li>
                 <li><a href="#">アニメDB</a></li>
             </ul>
             <ul class="right hide-on-med-and-down">
+                {% if request.user.is_authenticated %}
                 <li><a href="" class="dropdown-button" data-activates="dropdown-user">
                     <i class="material-icons left">person</i>
-                    ユーザ
+                    {{ request.user.username }}
                     <i class="material-icons right">arrow_drop_down</i>
                 </a></li>
                 <ul class="dropdown-content" id="dropdown-user">
                     <li><a href="#">プロフィール</a></li>
                     <li><a href="#">設定</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">ログアウト</a></li>
+                    <li><a href="{% url 'logout' %}">ログアウト</a></li>
                 </ul>
+                {% else %}
+                <li><a href="{% url 'social:begin' 'twitter' %}">Twitterログイン</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
