@@ -1,5 +1,9 @@
+{% extends 'schwul/base.html' %}
+
+{% block body %}
 {% if request.user.is_authenticated %}
 <a href="{% url 'logout' %}">ログアウト</a>
 {% else %}
 <a href="{% url 'social:begin' 'twitter' %}">Twitterログイン</a>
 {% endif %}
+{% endblock %}
