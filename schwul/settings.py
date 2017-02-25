@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'schwul',
     'social_django',
     'myauth.apps.MyauthConfig',
+    'anime.apps.AnimeConfig',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,4 @@ SOCIAL_AUTH_TWITTER_SECRET = os.environ['TWITTER_SECRET']
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/auth/login'
+LOGOUT_REDIRECT_URL = '/'
