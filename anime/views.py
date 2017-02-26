@@ -27,3 +27,16 @@ def detail(request, title):
         'stories': stories,
     }
     return render(request, 'anime/detail.html', context)
+
+
+def edit(request, title):
+    try:
+        anime = Anime.objects.get(title=title)
+    except Anime.DoesNotExist:
+        raise Http404("そのアニメは存在しません...")
+
+    context = {
+        'anime': anime,
+    }
+
+    return render(request, 'anime/edit.html', context)

@@ -1,9 +1,8 @@
 {% extends 'schwul/base.html' %}
 
 {% block body %}
-<a href="{% url 'anime:index' %}" class="waves-effect waves-light btn">アニメ一覧に戻る</a>
-<a href="{% url 'anime:edit' anime.title %}" class="waves-effect waves-light btn">編集する</a>
-<h3>{{ anime.title }}</h3>
+<a href="{% url 'anime:detail' anime.title %}" class="waves-effect waves-light btn">編集せずに戻る</a>
+<h3>「{{ anime.title }}」を編集する</h3>
 <p>{{ anime.synopsis }}</p>
 
 {% if stories %}
