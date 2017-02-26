@@ -20,7 +20,10 @@ def detail(request, title):
     except Anime.DoesNotExist:
         raise Http404("そのアニメは存在しません...")
 
+    stories = anime.story_set.order_by('id')
+
     context = {
-        'anime': anime
+        'anime': anime,
+        'stories': stories,
     }
     return render(request, 'anime/detail.html', context)
