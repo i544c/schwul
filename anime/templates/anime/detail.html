@@ -1,0 +1,18 @@
+{% extends 'schwul/base.html' %}
+
+{% block body %}
+{% if anime.story_set.all %}
+    <div class="row">
+        {% for story in anime.story_set.all %}
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{ story.subtitle }}</span>
+                    <p>{{ story.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
