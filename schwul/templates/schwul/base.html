@@ -23,7 +23,9 @@
             </a>
             <ul class="side-nav" id="mobile-col">
                 <li><a href="#">上映情報</a></li>
-                <li><a href="{% url 'anime:index' %}">アニメDB</a></li>
+                <li class="{% if request.path|slice:":6" == '/anime' %} active {% endif %}">
+                    <a href="{% url 'anime:index' %}">アニメDB</a>
+                </li>
                 {% if request.user.is_authenticated %}
                 <li class="no-padding"><ul class="collapsible collapsible-accordion"><li>
                     <a class="collapsible-header">
@@ -44,7 +46,9 @@
             </ul>
             <ul class="left hide-on-med-and-down">
                 <li><a href="#">上映情報</a></li>
-                <li><a href="{% url 'anime:index' %}">アニメDB</a></li>
+                <li class="{% if request.path|slice:":6" == '/anime' %} active {% endif %}">
+                    <a href="{% url 'anime:index' %}">アニメDB</a>
+                </li>
             </ul>
             <ul class="right hide-on-med-and-down">
                 {% if request.user.is_authenticated %}
