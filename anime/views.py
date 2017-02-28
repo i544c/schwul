@@ -14,6 +14,10 @@ def index(request):
     return render(request, 'anime/index.html', context)
 
 
+def add(request):
+    return render(request, 'anime/add.html')
+
+
 def detail(request, title):
     try:
         anime = Anime.objects.get(title=title)

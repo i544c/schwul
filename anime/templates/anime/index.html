@@ -1,6 +1,7 @@
 {% extends 'schwul/base.html' %}
 
 {% block body %}
+<a href="{% url 'anime:add' %}" class="waves-effect waves-light btn">アニメを追加する</a>
 {% if anime_list %}
     <div class="row">
         {% for anime in anime_list %}
