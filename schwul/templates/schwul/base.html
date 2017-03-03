@@ -16,14 +16,16 @@
 </head>
 <body>
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper blue lighten-1">
             <a href="/" class="brand-logo center">Schwul</a>
             <a href="" class="button-collapse" data-activates="mobile-col">
                 <i class="material-icons">menu</i>
             </a>
             <ul class="side-nav" id="mobile-col">
                 <li><a href="#">上映情報</a></li>
-                <li><a href="#">アニメDB</a></li>
+                <li class="{% if request.path|slice:":6" == '/anime' %} active {% endif %}">
+                    <a href="{% url 'anime:index' %}">アニメDB</a>
+                </li>
                 {% if request.user.is_authenticated %}
                 <li class="no-padding"><ul class="collapsible collapsible-accordion"><li>
                     <a class="collapsible-header">
@@ -34,7 +36,7 @@
                         <ul>
                             <li><a href="#">プロフィール</a></li>
                             <li><a href="#">設定</a></li>
-                            <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                            <li><a href="{% url 'myauth:logout' %}">ログアウト</a></li>
                         </ul>
                     </div>
                 </li></ul></li>
@@ -44,7 +46,9 @@
             </ul>
             <ul class="left hide-on-med-and-down">
                 <li><a href="#">上映情報</a></li>
-                <li><a href="#">アニメDB</a></li>
+                <li class="{% if request.path|slice:":6" == '/anime' %} active {% endif %}">
+                    <a href="{% url 'anime:index' %}">アニメDB</a>
+                </li>
             </ul>
             <ul class="right hide-on-med-and-down">
                 {% if request.user.is_authenticated %}
@@ -57,7 +61,7 @@
                     <li><a href="#">プロフィール</a></li>
                     <li><a href="#">設定</a></li>
                     <li class="divider"></li>
-                    <li><a href="{% url 'logout' %}">ログアウト</a></li>
+                    <li><a href="{% url 'myauth:logout' %}">ログアウト</a></li>
                 </ul>
                 {% else %}
                 <li><a href="{% url 'social:begin' 'twitter' %}">Twitterログイン</a></li>

@@ -1,7 +1,10 @@
 from django.conf.urls import url, include
 from django.contrib.auth.views import logout
 
+from . import views
+
+app_name = 'myauth'
 urlpatterns = [
-    url(r'^', include('social_django.urls', namespace='social')),
+    url(r'^login', views.login, name='login'),
     url(r'^logout', logout, name='logout'),
 ]

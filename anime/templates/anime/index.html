@@ -1,0 +1,23 @@
+{% extends 'schwul/base.html' %}
+
+{% block body %}
+<a href="{% url 'anime:add' %}" class="waves-effect waves-light btn">アニメを追加する</a>
+{% if anime_list %}
+    <div class="row">
+        {% for anime in anime_list %}
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{% url 'anime:detail' anime.title %}">
+                        <span class="card-title">{{ anime.title }}</span>
+                    </a>
+                    <p>{{ anime.synopsis }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    登録がありません...
+{% endif %}
+{% endblock %}

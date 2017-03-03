@@ -1,0 +1,8 @@
+{% extends 'schwul/base.html' %}
+
+{% block body %}
+<div class="alert-box" data-alert>
+    <p>この先にアクセスするにはログインが必要です！</p>
+</div>
+<a href="{% url 'social:begin' 'twitter' %}?{{ request.META.QUERY_STRING }}" class="waves-effect waves-light btn">Twitterログイン</a>
+{% endblock %}
