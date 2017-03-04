@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
-from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, redirect
 
 from .models import Anime
 
@@ -15,6 +15,17 @@ def index(request):
 
 
 def add(request):
+    if request.POST:
+        title = request.POST['title']
+        bc_year = request.POST['bc_year']
+        synopsis = request.POST['synopsis']
+        if title and bc_year and synopsis:
+            anime = Anime(title=title, bc_year=bc_year, synopsis=synopsis)
+            anime.save()
+            return render(request, 'anime/add.html', {
+                'message': "追加"
+            })
+
     return render(request, 'anime/add.html')
 
 
