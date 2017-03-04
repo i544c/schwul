@@ -17,6 +17,7 @@ class Anime(models.Model):
     def __str__(self):
         return self.title
 
+
 class Story(models.Model):
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
     subtitle = models.CharField(max_length=100)
@@ -25,3 +26,12 @@ class Story(models.Model):
 
     def __str__(self):
         return self.subtitle
+
+
+class Character(models.Model):
+    anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    intro = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name

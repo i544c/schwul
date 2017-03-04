@@ -19,5 +19,22 @@
         </div>
         {% endfor %}
     </div>
+
+    <h5>キャラクター</h5>
+    <div class="row">
+        {% for character in anime.character_set.all %}
+        <div class="col s12 m6">
+            <div class="card small">
+                <div class="card-image">
+                    <img src="https://placeimg.com/300/300/animals">
+                    <span class="card-title">{{ character.name }}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{ character.intro }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endif %}
 {% endblock %}
