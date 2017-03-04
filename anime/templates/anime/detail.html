@@ -1,49 +1,53 @@
 {% extends 'schwul/base.html' %}
 
 {% block body %}
-<a href="{% url 'anime:index' %}" class="waves-effect waves-light btn">アニメ一覧に戻る</a>
-<a href="{% url 'anime:edit' anime.title %}" class="waves-effect waves-light btn">編集する</a>
 <div class="parallax-container">
     <div class="parallax">
         <img src="https://placeimg.com/640/480/arch">
     </div>
 </div>
-<h3>{{ anime.title }}</h3>
-<p>{{ anime.synopsis }}</p>
 
-{% if stories %}
-    <div class="row">
-        {% for story in stories %}
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                    <span class="card-title">{{ story.id }}. {{ story.subtitle }}</span>
-                    <p>{{ story.description }}</p>
+<div class="container">
+    <h3>{{ anime.title }}</h3>
+    <p>{{ anime.synopsis }}</p>
+
+    <a href="{% url 'anime:index' %}" class="waves-effect waves-light btn">アニメ一覧に戻る</a>
+    <a href="{% url 'anime:edit' anime.title %}" class="waves-effect waves-light btn">編集する</a>
+
+    {% if stories %}
+        <div class="row">
+            {% for story in stories %}
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ story.id }}. {{ story.subtitle }}</span>
+                        <p>{{ story.description }}</p>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-{% endif %}
+    {% endif %}
 
-{% if anime.character_set.all %}
-    <h5>キャラクター</h5>
-    <div class="row">
-        {% for character in anime.character_set.all %}
-        <div class="col s12 m6">
-            <div class="card small">
-                <div class="card-image">
-                    <img src="https://placeimg.com/300/300/animals">
-                    <span class="card-title">{{ character.name }}</span>
-                </div>
-                <div class="card-content">
-                    <p>{{ character.intro }}</p>
+    {% if anime.character_set.all %}
+        <h5>キャラクター</h5>
+        <div class="row">
+            {% for character in anime.character_set.all %}
+            <div class="col s12 m6">
+                <div class="card small">
+                    <div class="card-image">
+                        <img src="https://placeimg.com/300/300/animals">
+                        <span class="card-title">{{ character.name }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ character.intro }}</p>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-{% endif %}
+    {% endif %}
+</div>
 
 <script>
 $('.parallax').parallax();
