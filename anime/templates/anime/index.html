@@ -22,4 +22,10 @@
     登録がありません...
     {% endif %}
 </div>
+
+{% if message %}
+<script>
+Materialize.toast("{{message}}", 3000);
+</script>
+{% endif %}
 {% endblock %}
