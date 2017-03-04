@@ -3,6 +3,11 @@
 {% block body %}
 <a href="{% url 'anime:index' %}" class="waves-effect waves-light btn">アニメ一覧に戻る</a>
 <a href="{% url 'anime:edit' anime.title %}" class="waves-effect waves-light btn">編集する</a>
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="https://placeimg.com/640/480/arch">
+    </div>
+</div>
 <h3>{{ anime.title }}</h3>
 <p>{{ anime.synopsis }}</p>
 
@@ -19,7 +24,9 @@
         </div>
         {% endfor %}
     </div>
+{% endif %}
 
+{% if anime.character_set.all %}
     <h5>キャラクター</h5>
     <div class="row">
         {% for character in anime.character_set.all %}
@@ -37,4 +44,8 @@
         {% endfor %}
     </div>
 {% endif %}
+
+<script>
+$('.parallax').parallax();
+</script>
 {% endblock %}
