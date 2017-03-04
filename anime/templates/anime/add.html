@@ -1,5 +1,19 @@
 {% extends 'schwul/base.html' %}
 
 {% block body %}
-追加するよ
+<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea', menubar:false });</script>
+
+<div class="container">
+    DBにアニメを追加します。
+    <form action="{% url 'anime:add' %}" method="post">
+        {% csrf_token %}
+        <div class="input-field">
+            <label for="title">タイトル</label>
+            <input type="text" id="title" name="title">
+        </div>
+        <textarea name="synopsis"></textarea>
+        <input type="submit" value="追加">
+    </form>
+</div>
 {% endblock %}

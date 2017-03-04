@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 
 from .models import Anime
@@ -15,6 +15,13 @@ def index(request):
 
 
 def add(request):
+    if request.POST:
+        context = [
+            request.POST['title'],
+            request.POST['synopsis'],
+        ]
+        return HttpResponse(context)
+
     return render(request, 'anime/add.html')
 
 
