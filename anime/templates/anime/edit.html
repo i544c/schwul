@@ -1,11 +1,16 @@
 {% extends 'schwul/base.html' %}
 
 {% block body %}
-<a href="{% url 'anime:detail' anime.title %}" class="waves-effect waves-light btn">編集せずに戻る</a>
-<h3>「{{ anime.title }}」を編集する</h3>
-<p>{{ anime.synopsis }}</p>
+<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea', menubar:false });</script>
 
-{% if stories %}
+<div class="container">
+  <a href="{% url 'anime:detail' anime.title %}" class="waves-effect waves-light btn">編集せずに戻る</a>
+  <h3>「{{ anime.title }}」を編集する</h3>
+
+  <textarea>{{ anime.synopsis }}</textarea>
+
+  {% if stories %}
     <div class="row">
         {% for story in stories %}
         <div class="col s12 m6">

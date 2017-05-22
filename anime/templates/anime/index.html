@@ -12,7 +12,7 @@
                     <a href="{% url 'anime:detail' anime.title %}">
                         <span class="card-title">{{ anime.title }}</span>
                     </a>
-                    <p class="truncate">{{ anime.synopsis }}</p>
+                    <p class="truncate">{{ anime.synopsis|safe }}</p>
                 </div>
             </div>
         </div>

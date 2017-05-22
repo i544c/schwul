@@ -9,7 +9,7 @@
 
 <div class="container">
     <h3>{{ anime.title }}</h3>
-    <p>{{ anime.synopsis }}</p>
+    <p>{{ anime.synopsis|safe }}</p>
 
     <a href="{% url 'anime:index' %}" class="waves-effect waves-light btn">アニメ一覧に戻る</a>
     <a href="{% url 'anime:edit' anime.title %}" class="waves-effect waves-light btn">編集する</a>
