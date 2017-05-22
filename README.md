@@ -6,9 +6,12 @@ Install `Docker` and `docker-compose`.
 
 `touch .env` and edit.
 ```
+POSTGRES_HOST=localhost
 POSTGRES_DB=schwul
 POSTGRES_USER=homo
 POSTGRES_PASSWORD=caDrufr2Sp7m
+TWITTER_KEY=twitterKey
+TWITTER_SECRET=twitterSecret
 ```
 
 

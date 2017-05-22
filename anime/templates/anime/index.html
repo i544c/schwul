@@ -1,0 +1,31 @@
+{% extends 'schwul/base.html' %}
+
+{% block body %}
+<div class="container">
+    <a href="{% url 'anime:add' %}" class="waves-effect waves-light btn">アニメを追加する</a>
+    {% if anime_list %}
+    <div class="row">
+        {% for anime in anime_list %}
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-content">
+                    <a href="{% url 'anime:detail' anime.title %}">
+                        <span class="card-title">{{ anime.title }}</span>
+                    </a>
+                    <p class="truncate">{{ anime.synopsis|safe }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    登録がありません...
+    {% endif %}
+</div>
+
+{% if message %}
+<script>
+Materialize.toast("{{message}}", 3000);
+</script>
+{% endif %}
+{% endblock %}
